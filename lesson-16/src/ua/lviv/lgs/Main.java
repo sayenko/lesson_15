@@ -91,22 +91,20 @@ public class Main {
 		}
 		
 		System.out.println();
-		for (Method method : methods) {
-			if(method.getName().contains("setPages")) {
-				System.out.println(book);
-				method.invoke(book, 356);
-				System.out.println(book);
-			}
-		}		
+		
+		Method methodSetPages = bookClass.getMethod("setPages", int.class);
+		methodSetPages.invoke(book, 400);
+		System.out.println(book);
+		
 		System.out.println();
 		
 		//Task 16.3
 		System.out.println("Task 16.3");
-		Method method = bookClass.getMethod("myMethod", String.class, int[].class);
-		method.invoke(book, new Object[]{"myMethod", new int[] {100}});		
+		Method methodMyMethod = bookClass.getMethod("myMethod", String.class, int[].class);
+		methodMyMethod.invoke(book, new Object[]{"myMethod", new int[] {100}});		
 		
-		method = bookClass.getMethod("myMethod", String[].class);
-		method.invoke(book, new Object[]{new String[]{"myMethod"}});
+		methodMyMethod = bookClass.getMethod("myMethod", String[].class);
+		methodMyMethod.invoke(book, new Object[]{new String[]{"myMethod"}});
 
 	}
 
